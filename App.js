@@ -2,19 +2,18 @@ import React, {useState} from 'react';
 import {StyleSheet, View, Text, Button, Linking} from 'react-native';
 
 const App = () => {
-  const [click, setClick] = useState(0)
-  const [count, setCount] = useState(0)
-
+  const [name, setName] = useState('Style test');
+ 
   const onClickHandler = () => {
-    setClick(click + 3)
-    setCount(count + 1)
+    setName('Style test is done')
   };
 
   return (
     <View style={styles.body}>
-      <Text style={styles.text}>{click}</Text>
-      <Button title="Update" onPress={onClickHandler} />
-      <Text style={styles.text}>You clicked {count} times</Text>
+      <Text style={styles.text}>{name}</Text>
+      <View style={styles.button}>
+        <Button title="Update" onPress={onClickHandler} />
+      </View>
     </View>
   );
 };
@@ -22,14 +21,22 @@ const App = () => {
 const styles = StyleSheet.create({
   body: {
     flex: 1,
-    backgroundColor: '#ff00ff',
+    backgroundColor: '#ff9919',
     alignItems: 'center',
     justifyContent: 'center',
+    borderWidth: 10,
+    borderColor: '#ff0034',
+    borderRadius: 10,
   },
   text: {
-    color: '#fff',
-    fontSize: 20,
+    color: '#000',
+    fontSize: 40,
+    textTransform: 'uppercase',
   },
+  button: {
+    width: 150,
+    height: 60,
+  }
 });
 
 export default App;
