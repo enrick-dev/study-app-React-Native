@@ -1,16 +1,16 @@
-import React, {useState} from 'react';
-import {StyleSheet, View, Text, Button, Linking} from 'react-native';
+import React, { useState } from 'react';
+import {
+  StyleSheet,
+  View,
+  Text,
+  Button,
+} from 'react-native';
 
 const App = () => {
-  const [name, setName] = useState('Style test');
- 
-  const onClickHandler = () => {
-    setName('Style test is done')
-  };
 
   return (
     <View style={styles.body}>
-      <View style={styles.container1}>
+      <View style={styles.row}>
         <View style={styles.view1}>
           <Text style={styles.text}>1</Text>
         </View>
@@ -21,15 +21,17 @@ const App = () => {
           <Text style={styles.text}>3</Text>
         </View>
       </View>
-      <View style={styles.container2}>
+      <View style={styles.row}>
         <View style={styles.view4}>
           <Text style={styles.text}>4</Text>
         </View>
+      </View>
+      <View style={styles.row}>
         <View style={styles.view5}>
           <Text style={styles.text}>5</Text>
         </View>
       </View>
-      <View style={styles.container3}>
+      <View style={styles.big_row}>
         <View style={styles.view6}>
           <Text style={styles.text}>6</Text>
         </View>
@@ -44,12 +46,21 @@ const App = () => {
 const styles = StyleSheet.create({
   body: {
     flex: 1,
+    flexDirection: 'column',
+    backgroundColor: '#ffffff',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+  row: {
+    flexDirection: 'row',
+    backgroundColor: '#ffffff',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  container1: {
+  big_row: {
     flex: 1,
     flexDirection: 'row',
+    backgroundColor: '#ffffff',
     alignItems: 'stretch',
     justifyContent: 'center',
   },
@@ -60,57 +71,46 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   view2: {
-    flex: 6,
-    backgroundColor: '#001fff',
+    flex: 2,
+    backgroundColor: '#ff00ff',
     alignItems: 'center',
     justifyContent: 'center',
   },
   view3: {
-    flex: 8,
-    backgroundColor: '#009fff',
+    flex: 3,
+    backgroundColor: '#ffff00',
     alignItems: 'center',
-    justifyContent: 'center',
-  },
-  container2: {
-    flex: 2,
-    flexDirection: 'column',
-    alignItems: 'stretch',
     justifyContent: 'center',
   },
   view4: {
     flex: 1,
-    backgroundColor: '#9909ff',
+    backgroundColor: '#ff0000',
     alignItems: 'center',
     justifyContent: 'center',
   },
   view5: {
     flex: 1,
-    backgroundColor: '#9979ff',
+    backgroundColor: '#0fff0f',
     alignItems: 'center',
-    justifyContent: 'center',
-  },
-  container3: {
-    flex: 9,
-    flexDirection: 'row',
-    alignItems: 'stretch',
     justifyContent: 'center',
   },
   view6: {
     flex: 1,
-    backgroundColor: '#950349',
+    backgroundColor: '#ffffff',
     alignItems: 'center',
     justifyContent: 'center',
   },
   view7: {
     flex: 1,
-    backgroundColor: '#953349',
+    backgroundColor: '#0000ff',
     alignItems: 'center',
     justifyContent: 'center',
   },
   text: {
-    color: '#000',
-    fontSize: 40,
-    textTransform: 'uppercase',
+    color: '#000000',
+    fontSize: 35,
+    fontStyle: 'italic',
+    margin: 10,
   },
 });
 
