@@ -23,29 +23,27 @@ const App = () => {
     {key: '7', name: 'Item 7'},
     {key: '8', name: 'Item 8'},
   ]);
-  const DATA =[
+  const [Sections, setSections] = useState([
     {
       title:'title1',
-      data: ['Item 1-1', 'Item 1-2', 'Item 1-3'],
+      data: ['Item 1-1', 'Item 1-2'],
     },
-    {
-      title:'title2',
-      data: ['Item 2-1', 'Item 2-2', 'Item 2-3'],
-    },
-    {
-      title:'title3',
-      data: ['Item 3-1'],
-    },
-    {
-      title:'title4',
-      data: ['Item 4-1', 'Item 4-2'],
-    },
-  ]
+  ]);
   const [Refreshing, setRefreshing] = useState(false);
 
   const onRefresh = () => {
     setRefreshing(true);
-    setItems([...Items, {name: 'item 69'}]);
+    const adding_index = Sections.length + 1;
+    setSections([...Sections,
+    {
+      title: 'Title ' + adding_index,
+      data:
+        [
+          'Item ' + adding_index + '-1',
+          'Item ' + adding_index + '-2'
+        ],
+    }
+    ]);
     setRefreshing(false);
   };
   return (
@@ -53,7 +51,7 @@ const App = () => {
 
     <SectionList
       keyExtractor={(item, index) => index.toString()}
-      sections={DATA}
+      sections={Sections}
       renderItem={({item}) => (
         <Text style={styles.text}>{item}</Text>
       )}
@@ -62,6 +60,13 @@ const App = () => {
           <Text style={styles.text}>{section.title}</Text>
         </View>
       )}
+      refreshControl={
+        <RefreshControl
+        refreshing={ Refreshing }
+        onRefresh={onRefresh}
+        colors={['#ff9809']}
+        />
+      }
     />
 
     //-----------------------FLAT LIST------------------------
